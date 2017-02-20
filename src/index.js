@@ -1,7 +1,10 @@
 import React from 'react';
 // hanterar komponeterna
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 // interagerar med DOMet
+
+const API_KEY = 'AIzaSyDu2u5oQk5jnsMeeFkQnaPUqyUnpRIPETA';
+
 
 
 
