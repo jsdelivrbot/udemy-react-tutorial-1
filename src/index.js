@@ -3,16 +3,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // interagerar med DOMet
 
+import SearchBar from './components/search_bar';
+//filer vi skapat själva och importer behöver filreferens och den rikitg filvägen
+
 const API_KEY = 'AIzaSyDu2u5oQk5jnsMeeFkQnaPUqyUnpRIPETA';
 
 
-
-
-
 // Create a new component. This componenet should produce html
-
 const App = () => {
-  return <div>Hi!</div>;
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
 }
 
 
