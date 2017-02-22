@@ -15,20 +15,23 @@ class App extends Component {
       selectedVideo: null
       };
 
-    YTSearch({key: API_KEY, term: 'surfboards'},  (videos)  =>  {
-      this.setState({
-        videos: videos,
-        selectedVideo: videos[0]
-      });
-      //if the key and the variable have the same name: this.setState({ videos:videos });
-    });
+    this.videoSearch('surfboards');
   }
-  //när appen först renderas skapar den en tom videolista, sen går den direkt vidare och gör en förfrågan efter videos.
+
+
+videoSearch (term) {
+  YTSearch({key: API_KEY, term: term},  (videos)  =>  {
+    this.setState({
+      videos: videos,
+      selectedVideo: videos[0]
+    });
+  });
+}
 
   render () {
     return (
       <div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={term => this.videoSearch(term)}  />
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList
           onVideoSelect={selectedVideo => this.setState({selectedVideo})  }
@@ -37,6 +40,8 @@ class App extends Component {
     );
   }
 }
+//pass a callback down to the search_bar
+
 //we define a function with one purpose, updates the apps state, it takes a video, and updates the selected video, then it passes it as a property into video-list, video-list takes that property and passes it to video-list-item, video-list-item takes that property and says whenever I get clicked call that function with the video that I was passed.
 
 
