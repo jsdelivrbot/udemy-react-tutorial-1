@@ -1,11 +1,9 @@
 import React from 'react';
 
-
-//mkt ofta har ett top-component inte hunnit ladda in de data som en child-component behöver, vi kollar därför först av först om videon har hämtats
 const VideoDetail = ({video}) => {
-  if(!video){
-    //om videon inte finns...gör detta
-    return <div>...Loading</div>;
+  if (!video)  {
+    //om video inte finns...gör detta
+    return <div>Loading...</div>;
   }
 
 // om videon finns gör detta

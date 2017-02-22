@@ -10,26 +10,34 @@ class App extends Component {
   constructor(props)  {
     super(props);
 
-      this.state = {  videos: []  };
+    this.state = {
+      videos: [],
+      selectedVideo: null
+      };
 
-      YTSearch({key: API_KEY, term: 'surfboards'},  (videos)  =>  {
-        this.setState({ videos });
-        //if the key and the variable have the same name: this.setState({ videos:videos });
+    YTSearch({key: API_KEY, term: 'surfboards'},  (videos)  =>  {
+      this.setState({
+        videos: videos,
+        selectedVideo: videos[0]
       });
-   }
-   //när appen först renderas skapar den en tom videolista, sen går den direkt vidare och gör en förfrågan efter videos.
+      //if the key and the variable have the same name: this.setState({ videos:videos });
+    });
+  }
+  //när appen först renderas skapar den en tom videolista, sen går den direkt vidare och gör en förfrågan efter videos.
 
   render () {
     return (
       <div>
         <SearchBar />
-        <VideoDetail video={this.state.videos[0]}/>
-        <VideoList videos={this.state.videos} />
+        <VideoDetail video={this.state.selectedVideo}/>
+        <VideoList
+          onVideoSelect={selectedVideo => this.setState({selectedVideo})  }
+          videos={this.state.videos} />
       </div>
     );
   }
 }
-
+//we define a function with one purpose, updates the apps state, it takes a video, and updates the selected video, then it passes it as a property into video-list, video-list takes that property and passes it to video-list-item, video-list-item takes that property and says whenever I get clicked call that function with the video that I was passed.
 
 
 
